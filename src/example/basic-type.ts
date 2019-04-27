@@ -11,7 +11,7 @@ num = 0x7b
 let str: string
 str = `数值是${num}`
 
-// 数值类型
+// 数组类型
 // 写法1
 let arr1: number[]
 arr1 = [5]
