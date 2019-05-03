@@ -170,3 +170,69 @@ console.log(obj[sym]); // "value"
 * Symbol.unscopables
 对象，它自己拥有的属性会被with作用域排除在外。
 
+## 接口
+接口是一系列抽象方法的声明，是一些方法特征的集合，这些方法都应该是抽象的，需要由具体的类去实现，然后第三方就可以通过这组抽象方法调用，让具体的类执行具体的方法。
+
+### 接口初探
+```
+interface NameInfo {
+    firstName: string,
+    lastName: string
+}
+
+const getFullName = ({ firstName, lastName}: NameInfo): string => {
+    return `${firstName} ${lastName}`
+}
+
+getFullName({
+    firstName: 'Jack',
+    lastName: 'cool'
+})
+```
+
+### 可选属性
+接口里的属性不全都是必需的。 有些是只在某些条件下存在，或者根本不存在。
+```
+interface Vegetable {
+    color?: string,
+    type: string
+}
+
+const getVegetables = ({ color, type}: Vegetable) => {
+    return `A ${color ? (color + ' '): ''}${type}`
+}
+
+getVegetables({
+    // color: 'green',
+    type: 'Spinach' 
+})
+```
+
+* 多余属性绕过检查
+    * 类型断言
+
+    ```
+    let Juice = getVegetables({ color: 'orange', type: 'juice', price: '14/g' } as Vegetable);
+    ```
+
+    * 添加一个字符串索引签名
+
+    ```
+    interface Vegetable {
+        color?: string,
+        type: string,
+        [propName: string]: any
+    }
+    ```
+
+    * 将这个对象赋值给一个另一个变量
+
+    ```
+    const vegetableInfo = {
+        color: 'orange',
+         type: 'juice',
+         size: '8kg'
+    }
+    let Juice = getVegetables(vegetableInfo)
+    ```
+
