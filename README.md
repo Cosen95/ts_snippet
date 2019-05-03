@@ -72,3 +72,49 @@ const consoleText = (text: string): void => {
     console.log(text)
 }
 ```
+
+### null和undefined
+TypeScript里，undefined和null两者各自有自己的类型分别叫做undefined和null。默认情况下null和undefined是所有类型的子类型。
+```
+let u: undefined;
+u = undefined;
+// u = 12
+
+let n: null;
+// n = 'string';
+n = null;
+```
+
+### never
+never类型表示的是那些永不存在的值的类型。 例如， never类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型。
+```
+const errorFunc = (message: string): never => {
+    throw new Error(message)
+}
+const infiniteFunc = (): never => {
+    while(true) {
+
+    }
+}
+let neverVariable = (() => {
+    while(true) {
+
+    }
+})()
+num = neverVariable
+```
+
+### 类型断言
+有时候你会遇到这样的情况，你会比TypeScript更了解某个值的详细信息。 通常这会发生在你清楚地知道一个实体具有比它现有类型更确切的类型。
+
+通过类型断言这种方式可以告诉编译器，“相信我，我知道自己在干什么”。
+类型断言有两种形式。 其一是“尖括号”语法，另一个为as语法。
+```
+const getLength = (target: string | number): number => {
+    if((<string>target).length || (target as string).length === 0) {
+        return (<string>target).length
+    } else {
+        return target.toString().length
+    }
+}
+```
