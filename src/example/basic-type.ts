@@ -44,3 +44,46 @@ const arr4: any[] = [1, false]
 const consoleText = (text: string): void => {
     console.log(text)
 }
+
+// null和undefined
+let u: undefined;
+u = undefined;
+// u = 12
+
+let n: null;
+// n = 'string';
+n = null;
+
+// never
+const errorFunc = (message: string): never => {
+    throw new Error(message)
+}
+const infiniteFunc = (): never => {
+    while(true) {
+
+    }
+}
+let neverVariable = (() => {
+    while(true) {
+
+    }
+})()
+num = neverVariable
+
+// object
+let obj = {
+    count: 24
+}
+function getObj(obj: object): void {
+    console.log(obj)
+}
+getObj(obj)
+
+// 类型断言
+const getLength = (target: string | number): number => {
+    if((<string>target).length || (target as string).length === 0) {
+        return (<string>target).length
+    } else {
+        return target.toString().length
+    }
+}
