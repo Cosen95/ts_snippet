@@ -236,3 +236,34 @@ getVegetables({
     let Juice = getVegetables(vegetableInfo)
     ```
 
+### 只读属性
+一些对象属性（数组同样适用）只能在对象刚刚创建的时候修改其值。 你可以在属性名前用 readonly来指定只读属性:
+```
+interface Vegetable {
+    color: string,
+    readonly type: string
+}
+let juice: Vegetable = {
+    type: 'juice'
+}
+juice.type = 'banana';  // error
+```
+
+### 函数类型
+接口能够描述JavaScript中对象拥有的各种各样的外形。 除了描述带有属性的普通对象外，接口也可以描述函数类型。
+
+为了使用接口表示函数类型，我们需要给接口定义一个调用签名。 它就像是一个只有参数列表和返回值类型的函数定义。参数列表里的每个参数都需要名字和类型。
+```
+interface AddFunc {
+    (num1: number, num2: number): boolean
+}
+
+let myAdd: AddFunc = (n1, n2) => {
+    if (n1 > n2) {
+        return true
+    } else {
+        return false
+    }
+}
+```
+
