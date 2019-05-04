@@ -72,3 +72,17 @@ const carrot: Carrot = {
     price: '$3.6/kg',
     color: 'brown',
 }
+
+// 混合类型
+interface Counter {
+    (): void,
+    count: number
+}
+const getCounter = (): Counter => {
+    const c = () => {
+        c.count++
+    }
+    c.count = 0
+    return c
+}
+const counter: Counter = getCounter()

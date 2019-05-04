@@ -302,3 +302,20 @@ const carrot: Carrot = {
 }
 ```
 
+### 混合类型
+混合类型就是一个对象可以同时做为函数和对象使用，并带有额外的属性。
+```
+interface Counter {
+    (): void,
+    count: number
+}
+const getCounter = (): Counter => {
+    const c = () => {
+        c.count++
+    }
+    c.count = 0
+    return c
+}
+const counter: Counter = getCounter()
+```
+
