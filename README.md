@@ -319,3 +319,45 @@ const getCounter = (): Counter => {
 const counter: Counter = getCounter()
 ```
 
+## 函数
+
+### 函数类型
+函数类型包含两部分：参数类型和返回值类型。 当写出完整函数类型的时候，这两部分都是需要的。
+```
+let add = (arg1: number, arg2: number): number => arg1 + arg2
+```
+
+### 可选参数和默认参数
+在TypeScript里我们可以在参数名旁使用 ?实现可选参数的功能。可选参数必须跟在必须参数后面。
+```
+type AddFunction = (arg1: number, arg2: number, arg3?: number) => number
+let addFunc: AddFunction
+addFunc = (x: number, y: number) => x + y
+addFunc = (x: number, y: number = 0) => x + y
+```
+
+### 剩余参数
+必要参数，默认参数和可选参数有个共同点：它们表示某一个参数。 有时，你想同时操作多个参数，或者你并不知道会有多少参数传递进来。 在JavaScript里，你可以使用 arguments来访问所有传入的参数。
+
+在TypeScript里，你可以把所有参数收集到一个变量里：
+```
+const handleData = (arg1: number, ...args: number[]) => {
+    // ...
+}
+```
+
+### 重载
+根据传入不同的参数而返回不同类型的数据。方法是为同一个函数提供多个函数类型定义来进行函数重载。 编译器会根据这个列表去处理函数的调用。
+```
+function handleReload(x: string): string[]
+function handleReload(x: number): number[]
+function handleReload(x: any): any {
+    if (typeof x === 'string') {
+        return x.split('')
+    } else {
+        return x.toString().split('').map((item: any) => Number(item))
+    }
+}
+```
+
+

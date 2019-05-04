@@ -17,8 +17,8 @@ let arr1: number[]
 arr1 = [5]
 
 // 写法2
-let arr2: Array<number>
-let arr3: (string | number)[]
+let arr2: number[]
+let arr3: Array<string | number>
 arr3 = [1, 'spring']
 
 // 元祖类型
@@ -29,7 +29,7 @@ tuple = ['a', 1, false]
 enum Roles {
     SUPER_ADMIN,
     ADMIN,
-    USER
+    USER,
 }
 console.log(Roles.ADMIN);
 
@@ -59,20 +59,16 @@ const errorFunc = (message: string): never => {
     throw new Error(message)
 }
 const infiniteFunc = (): never => {
-    while(true) {
-
-    }
+    while (true) {}
 }
 let neverVariable = (() => {
-    while(true) {
-
-    }
+    while (true) {}
 })()
 num = neverVariable
 
 // object
 let obj = {
-    count: 24
+    count: 24,
 }
 function getObj(obj: object): void {
     console.log(obj)
@@ -81,8 +77,8 @@ getObj(obj)
 
 // 类型断言
 const getLength = (target: string | number): number => {
-    if((<string>target).length || (target as string).length === 0) {
-        return (<string>target).length
+    if ((target as string).length || (target as string).length === 0) {
+        return (target as string).length
     } else {
         return target.toString().length
     }
