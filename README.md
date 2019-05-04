@@ -267,3 +267,38 @@ let myAdd: AddFunc = (n1, n2) => {
 }
 ```
 
+### 可索引的类型
+与使用接口描述函数类型差不多，我们也可以描述那些能够“通过索引得到”的类型，比如a[10]或ageMap["daniel"]。 
+```
+interface RoleDic {
+    [id: number]: string
+}
+const role: RoleDic = {
+    100: 'hello',
+    // '100': 'jack',
+}
+```
+共有支持两种索引签名：字符串和数字。 可以同时使用两种类型的索引，但是数字索引的返回值必须是字符串索引返回值类型的子类型。 这是因为当使用 number来索引时，JavaScript会将它转换成string然后再去索引对象。 也就是说用 100（一个number）去索引等同于使用"100"（一个string）去索引，因此两者需要保持一致。
+
+### 接口的继承
+接口的继承让我们能够从一个接口里复制成员到另一个接口里，可以更灵活地将接口分割到可重用的模块里。
+```
+interface Vegetables {
+    price: string
+}
+interface Tomato extends Vegetables {
+    weight: string
+}
+interface Carrot extends Vegetables {
+    color: string
+}
+const tomato: Tomato = {
+    price: '$5.8/kg',
+    weight: '2.6kg',
+}
+const carrot: Carrot = {
+    price: '$3.6/kg',
+    color: 'brown',
+}
+```
+
