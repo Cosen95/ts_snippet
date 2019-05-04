@@ -363,4 +363,68 @@ function handleReload(x: any): any {
 
 注意，function handleReload(x: any): any并不是重载列表的一部分，因此这里只有两个重载：一个是接收字符串另一个接收数字。 
 
+## 泛型
+使用泛型来创建可重用的组件，一个组件可以支持多种类型的数据。 
+### 泛型变量
+```
+const getArray = <T>(value: T, times: number = 5): T[] => {
+    return new Array(times).fill(value)
+}
+getArray<number>(3, 5)
+
+const getArray = <T, U>(param1: T, param2: U, times: number): Array<[T, U]> => {
+    return new Array(times).fill([param1, param2])
+}
+getArray(1, 'a', 3)
+```
+### 泛型类型
+```
+type GetArray = <T>(arg: T, times: number) => T[]
+let getArray: GetArray = (arg: any, times: number) => {
+    return new Array(times).fill(arg)
+}
+```
+
+### 泛型接口
+```
+interface GetArray<T> {
+    (arg: T, times: number): T[],
+    array: T[]
+}
+```
+
+### 泛型约束
+我们有时候想操作某类型的一组值，并且我们知道这组值具有什么样的属性。
+
+相比于操作any所有类型，我们想要限制函数去处理任意带有.length属性的所有类型。 只要传入的类型有这个属性，我们就允许，就是说至少包含这一属性。 为此，我们需要列出对于T的约束要求。
+为此，我们定义一个接口来描述约束条件。 创建一个包含 .length属性的接口，使用这个接口和extends关键字还实现约束：
+```
+interface ValueWithLength {
+    length: number
+}
+
+const getArray = <T extends ValueWithLength>(arg: T, times: number): T[] => {
+    return new Array(times).fill(arg)
+}
+getArray([1, 2], 3)
+getArray('abc', 3)
+getArray({
+    length: 2,
+}, 3)
+```
+
+* 在泛型约束中使用类型参数
+你可以声明一个类型参数，且它被另一个类型参数所约束。比如，
+    ```
+    const getProps = <T, K extends keyof T>(object: T, propName: K) => {
+        return object[propName]
+    }
+    const objs = {
+        a: 'a',
+        b: 'b',
+    }
+    getProps(objs, 'a')
+    // getProps(objs, 'c')
+    ```
+
 
