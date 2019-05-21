@@ -43,3 +43,33 @@ function sum(arg1: any, arg2: any): any {
 }
 let func = merge;
 // func = sum
+
+// 枚举
+enum StatusEnum {
+    On,
+    Off
+}
+enum AnimalEnum {
+    Dog,
+    Cat
+}
+let ind = StatusEnum.On;
+// ind = AnimalEnum.Dog
+
+// 类
+class AnimalClass {
+    public static age: number
+    constructor(public name: string) {}
+}
+class PeopleClass {
+    public static age: string
+    constructor(public name: string) {}
+}
+class FoodIsClass {
+    constructor(public name: number) {}
+}
+let animal: AnimalClass
+let people: PeopleClass
+let food: FoodIsClass
+// animal = people
+// animal = food
