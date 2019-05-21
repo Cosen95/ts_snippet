@@ -57,19 +57,40 @@ let ind = StatusEnum.On;
 // ind = AnimalEnum.Dog
 
 // 类
-class AnimalClass {
-    public static age: number
-    constructor(public name: string) {}
-}
-class PeopleClass {
-    public static age: string
-    constructor(public name: string) {}
-}
-class FoodIsClass {
-    constructor(public name: number) {}
-}
-let animal: AnimalClass
-let people: PeopleClass
-let food: FoodIsClass
+// class AnimalClass {
+//     public static age: number
+//     constructor(public name: string) {}
+// }
+// class PeopleClass {
+//     public static age: string
+//     constructor(public name: string) {}
+// }
+// class FoodIsClass {
+//     constructor(public name: number) {}
+// }
+// let animal: AnimalClass
+// let people: PeopleClass
+// let food: FoodIsClass
 // animal = people
 // animal = food
+
+class ParentClass {
+    private age: number
+    constructor() {
+
+    }
+}
+class ChildrenClass extends ParentClass {
+    constructor() {
+        super()
+    }
+}
+class OtherClass {
+    private age: number
+    constructor() {
+
+    }
+}
+
+const children: ParentClass = new ChildrenClass()
+const other: ParentClass = new OtherClass()
