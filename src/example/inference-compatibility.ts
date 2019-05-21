@@ -92,5 +92,12 @@ class OtherClass {
     }
 }
 
-const children: ParentClass = new ChildrenClass()
-const other: ParentClass = new OtherClass()
+// const children: ParentClass = new ChildrenClass()
+// const other: ParentClass = new OtherClass()
+
+interface Data<T> {
+    data: T
+}
+let data1: Data<number>
+let data2: Data<string>
+data1 = data2
