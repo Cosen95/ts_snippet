@@ -100,4 +100,4 @@ interface Data<T> {
 }
 let data1: Data<number>
 let data2: Data<string>
-data1 = data2
+// data1 = data2
