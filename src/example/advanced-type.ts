@@ -108,6 +108,16 @@ interface Type {
 }
 type Test = Type[keyof Type]
 
+interface Info1 {
+    name: string;
+    age: number;
+    sex: string
+}
+type ReadonlyType<T> = {
+    readonly [P in keyof T]: T[P]
+}
+type ReadonlyInfo1 = ReadonlyType<Info1>
+
 
 
 
