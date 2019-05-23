@@ -74,15 +74,15 @@ const carrot: Carrot = {
 }
 
 // 混合类型
-interface Counter {
-    (): void,
-    count: number
-}
-const getCounter = (): Counter => {
-    const c = () => {
-        c.count++
-    }
-    c.count = 0
-    return c
-}
-const counter: Counter = getCounter()
+// interface Counter {
+//     (): void,
+//     count: number
+// };
+// const getCounter = (): Counter => {
+//     const c = () => {
+//         c.count++
+//     }
+//     c.count = 0
+//     return c
+// }
+// const counter: Counter = getCounter()

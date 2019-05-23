@@ -47,3 +47,30 @@ function area(s: Shape) {
         case "circle": return Math.PI * s.radius ** 2;
     }
 }
+
+// 多态的this类型
+class Counter {
+    constructor(public count: number) {}
+    public add(value: number) {
+        this.count += value
+        return this
+    }
+    public subtract(value: number) {
+        this.count -= value
+        return this
+    }
+}
+let count = new Counter(10)
+console.log(count.add(3).subtract(2))   // 链式操作
+
+class PowCounter extends Counter {
+    constructor(public count: number) {
+        super(count)
+    }
+    public pow(value: number) {
+        this.count = this.count ** value
+        return this
+    }
+}
+let powCounter = new PowCounter(2)
+console.log(powCounter.pow(3).add(5).subtract(6))

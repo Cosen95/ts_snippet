@@ -75,7 +75,7 @@ let ind = StatusEnum.On;
 // animal = food
 
 class ParentClass {
-    private age: number
+    // private age: number
     constructor() {
 
     }
@@ -86,7 +86,7 @@ class ChildrenClass extends ParentClass {
     }
 }
 class OtherClass {
-    private age: number
+    // private age: number
     constructor() {
 
     }
