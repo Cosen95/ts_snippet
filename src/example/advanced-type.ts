@@ -74,3 +74,43 @@ class PowCounter extends Counter {
 }
 let powCounter = new PowCounter(2)
 console.log(powCounter.pow(3).add(5).subtract(6))
+
+
+// keyof
+interface InfoInterface {
+    name: string;
+    age: number
+}
+let infoProp: keyof InfoInterface
+infoProp = 'name'
+// infoProp = 'size'
+
+function getValue<T, K extends keyof T>(obj: T, names: K[]) {
+    return names.map(n => obj[n])
+}
+const infoObj = {
+    name: 'jack',
+    age: 24
+}
+let infoValues = getValue(infoObj, ['name','age'])
+
+// [] 索引访问操作符
+type NameType = InfoInterface['name']
+
+interface Type {
+    a: never;
+    b: never;
+    c: string;
+    d: number;
+    e: undefined;
+    f: null;
+    g: object
+}
+type Test = Type[keyof Type]
+
+
+
+
+
+
+
