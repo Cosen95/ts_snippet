@@ -177,6 +177,26 @@ type type7 = Type1<any>
 type type8 = Type1<unknown>
 
 
+// 条件类型
+type Type2<T> = T extends string ? string : number
+
+type TypeName<T> = 
+    T extends string ? string : 
+    T extends number ? number : 
+    T extends boolean ? boolean : 
+    T extends undefined ? undefined :
+    T extends () => void ? () => void :
+    object
+
+
+type Diff<T, U> = T extends U ? never : T
+type Test2 = Diff<string | number | boolean, undefined | number>
+
+// infer
+type Type3<T> = T extends any[] ? T[number] : T
+
+type Type4<T> = T extends Array<infer U> ? U : T
+
 
 
 
