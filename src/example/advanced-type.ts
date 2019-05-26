@@ -119,6 +119,18 @@ type ReadonlyType<T> = {
 type ReadonlyInfo1 = ReadonlyType<Info1>
 
 
+type MapToPromise<T> = {
+    [k in keyof T]: Promise<T[K]>
+}
+type Tuple = [number, string, boolean]
+type promiseTuple = MapToPromise<Tuple>
+let tuple2: promiseTuple = [
+    new Promise((resolve, reject) => resolve(1)),
+    new Promise((resolve, reject) => resolve('1')),
+    new Promise((resolve, reject) => resolve(true))
+]
+
+
 
 
 
