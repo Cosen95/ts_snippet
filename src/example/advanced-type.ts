@@ -131,6 +131,51 @@ let tuple2: promiseTuple = [
 ]
 
 
+// 1.任何类型都可以赋值给unknown类型
+let value1: unknown;
+value1 = 'a'
+value1 = 123
+
+// 2.如果没有类型断言或基于控制流的类型细化时，unknown不可以赋值给其他类型，只能赋值给unknown和any类型
+let value2: unknown;
+let value3: any = value2
+
+// 3.如果没有类型断言或基于控制流的类型细化时，不能在他上面进行任何操作
+let value4: unknown
+// value4 += 1
+
+// 4.unknown与其他任何其他类型组成的交叉类型，最后都等于其他类型
+type type1 = string & unknown
+type type2 = unknown & unknown
+
+// 5.unknown与其他任何类型（除了any）组成的联合类型，都等于unknown
+type type3 = unknown | string
+type type4 = unknown | any
+
+// 6.never类型是unknown的子类型
+type type5 = never extends unknown ?true : false
+
+// 7.keyof unknown 等于类型never
+type type6 = keyof unknown
+
+// 8.只能对unknown进行等或不等操作，不能进行其他操作
+value1 === value2
+value1 !== value2
+// value1 += value2
+
+// 9.unknown类型的值不能访问它的属性、作为函数调用和作为类创建实例
+let value5: unknown
+// value5.age
+// value5()
+// new value5()
+
+// 10.使用映射类型时，如果遍历的是unknown类型，则不会映射任何属性
+type Type1<T> = {
+    [P in keyof T]: number
+}
+type type7 = Type1<any>
+type type8 = Type1<unknown>
+
 
 
 
