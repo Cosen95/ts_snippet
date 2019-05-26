@@ -197,6 +197,13 @@ type Type3<T> = T extends any[] ? T[number] : T
 
 type Type4<T> = T extends Array<infer U> ? U : T
 
+// 预定义的有条件类型
+// Exclude<T, U> -- 从T中剔除可以赋值给U的类型。
+// Extract<T, U> -- 提取T中可以赋值给U的类型。
+// NonNullable<T> -- 从T中剔除null和undefined。
+// ReturnType<T> -- 获取函数返回值类型。
+// InstanceType<T> -- 获取构造函数类型的实例类型。
+
 
 
 
