@@ -1,3 +1,11 @@
+var Validation;
+(function (Validation) {
+    var isLetterReg = /^[A-Za-z]+$/;
+    Validation.isNumberReg = /^[0-9]+$/;
+    Validation.checkLetter = function (text) {
+        return isLetterReg.test(text);
+    };
+})(Validation || (Validation = {}));
 // import './example/basic-type';
 // import './example/symbol';
 // import './example/interface';
@@ -8,15 +16,6 @@
 // import './example/inference-compatibility';
 // import './example/advanced-type';
 /// <reference path='./ts-modules/space.ts' />
-let isLetter = Validation.checkLetter(true)
-console.log(isLetter)
+var isLetter = Validation.checkLetter(true);
+console.log(isLetter);
 
-// 别名
-namespace Shapes {
-    export namespace Polygons {
-        export class Triangle {}
-        export class Square{}
-    }
-}
-import polygons = Shapes.Polygons
-let triangle = new polygons.Triangle()

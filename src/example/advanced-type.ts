@@ -120,7 +120,7 @@ type ReadonlyInfo1 = ReadonlyType<Info1>
 
 
 type MapToPromise<T> = {
-    [k in keyof T]: Promise<T[K]>
+    // [k in keyof T]: Promise<T[K]>
 }
 type Tuple = [number, string, boolean]
 type promiseTuple = MapToPromise<Tuple>
