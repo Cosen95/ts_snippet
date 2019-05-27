@@ -1,4 +1,3 @@
-import { namespace } from '../index';
 // 声明合并
 
 // 合并接口

@@ -7,16 +7,19 @@
 // import './example/enum';
 // import './example/inference-compatibility';
 // import './example/advanced-type';
-/// <reference path='./ts-modules/space.ts' />
-let isLetter = Validation.checkLetter(true)
-console.log(isLetter)
+import './example/decorators';
 
-// 别名
-namespace Shapes {
-    export namespace Polygons {
-        export class Triangle {}
-        export class Square{}
-    }
-}
-import polygons = Shapes.Polygons
-let triangle = new polygons.Triangle()
+
+/// <reference path='./ts-modules/space.ts' />
+// let isLetter = Validation.checkLetter(true)
+// console.log(isLetter)
+
+// // 别名
+// namespace Shapes {
+//     export namespace Polygons {
+//         export class Triangle {}
+//         export class Square{}
+//     }
+// }
+// import polygons = Shapes.Polygons
+// let triangle = new polygons.Triangle()
