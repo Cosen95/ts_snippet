@@ -128,3 +128,20 @@ const classE = new ClassE('zhichen')
 //     @printPropertyName
 //     public id: number
 // }
+
+// 参数装饰器
+function required(target: any, propertyName: string, index: number) {
+    console.log(`修饰的是${propertyName}的第${index + 1}个参数`)
+}
+class ClassG {
+    public name: string = 'lele'
+    public age: number = 24
+    public getInfo(prefix: string, @required infoType: string) {
+        return prefix + ' ' + this[infoType]
+    }
+}
+interface ClassG {
+    [key: string]: string | number | Function
+}
+const classG = new ClassG()
+classG.getInfo('ex', 'sex')
