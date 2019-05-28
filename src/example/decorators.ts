@@ -23,19 +23,51 @@
 // }
 
 
-let sign = null
-function setName(name: string) {
-    return (target: new() => any) => {
-        sign = target
-        console.log(target.name)
-    }
+// let sign = null
+// function setName(name: string) {
+//     return (target: new() => any) => {
+//         sign = target
+//         console.log(target.name)
+//     }
+// }
+
+// @setName('jack')
+// class Decorator {
+//     constructor() {
+
+//     }
+// }
+// console.log(sign === Decorator)
+// console.log(sign === Decorator.prototype.constructor)
+
+
+function addName(constructor: new() => any) {
+    constructor.prototype.name = 'jack'
 }
 
-@setName('jack')
+@addName
 class Decorator {
-    constructor() {
 
+}
+interface Decorator {
+    name: string
+}
+const decorator = new Decorator()
+console.log(decorator.name)
+
+function classDecorator<T extends { new(...args: any[]): {} }>(target: T) {
+    return class extends target {
+        public newProperty = 'new property'
+        public hello = 'override'
     }
 }
-console.log(sign === Decorator)
-console.log(sign === Decorator.prototype.constructor)
+
+@classDecorator
+class Gretter {
+    public property = 'property'
+    public hello: string
+    constructor(m: string) {
+        this.hello = m
+    }
+}
+console.log(new Gretter('world'))
