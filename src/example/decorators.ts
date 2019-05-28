@@ -84,17 +84,47 @@ Object.defineProperty(obj2, 'name', {
 })
 console.log(obj2.name)
 
+// 方法装饰器
+// function enumerable(value: boolean) {
+//     return function(target:any, propertyKey: string, descriptor: PropertyDescriptor) {
+//         descriptor.enumerable = value
+//     }
+// }
+// class ClassD {
+//     constructor(public age: number) {}
+//     @enumerable(false)
+//     public getAge() {
+//         return this.age
+//     }
+// }
+// const classD = new ClassD(24)
 
+// 访问器装饰器
 function enumerable(value: boolean) {
     return function(target:any, propertyKey: string, descriptor: PropertyDescriptor) {
         descriptor.enumerable = value
     }
 }
-class ClassD {
-    constructor(public age: number) {}
+class ClassE {
+    private _name: string
+    constructor(name: string) {
+        this._name = name
+    }
     @enumerable(false)
-    public getAge() {
-        return this.age
+    get name() {
+        return this._name
+    }
+    set name(name) {
+        this._name = name
     }
 }
-const classD = new ClassD(24)
+const classE = new ClassE('zhichen')
+
+// 属性装饰器
+// function printPropertyName(target: any, propertyName: string) {
+//     console.log(propertyName)
+// }
+// class ClassF {
+//     @printPropertyName
+//     public id: number
+// }
