@@ -55,19 +55,46 @@ interface Decorator {
 const decorator = new Decorator()
 console.log(decorator.name)
 
-function classDecorator<T extends { new(...args: any[]): {} }>(target: T) {
-    return class extends target {
-        public newProperty = 'new property'
-        public hello = 'override'
-    }
-}
+// function classDecorator<T extends { new(...args: any[]): {} }>(target: T) {
+//     return class extends target {
+//         public newProperty = 'new property'
+//         public hello = 'override'
+//     }
+// }
 
-@classDecorator
-class Gretter {
-    public property = 'property'
-    public hello: string
-    constructor(m: string) {
-        this.hello = m
+// @classDecorator
+// class Gretter {
+//     public property = 'property'
+//     public hello: string
+//     constructor(m: string) {
+//         this.hello = m
+//     }
+// }
+// console.log(new Gretter('world'))
+
+interface ObjWithAnyKeys {
+    [key: string]: any
+}
+let obj2: ObjWithAnyKeys = {}
+Object.defineProperty(obj2, 'name', {
+    value: 'cool',
+    writable: true,
+    configurable: true,
+    enumerable: false
+})
+console.log(obj2.name)
+
+
+function enumerable(value: boolean) {
+    return function(target:any, propertyKey: string, descriptor: PropertyDescriptor) {
+        descriptor.enumerable = value
     }
 }
-console.log(new Gretter('world'))
+class ClassD {
+    constructor(public age: number) {}
+    @enumerable(false)
+    public getAge() {
+        return this.age
+    }
+}
+const classD = new ClassD(24)
