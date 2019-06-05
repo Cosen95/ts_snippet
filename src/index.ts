@@ -7,7 +7,8 @@
 // import './example/enum';
 // import './example/inference-compatibility';
 // import './example/advanced-type';
-import './example/decorators';
+// import './example/decorators';
+import './example/indexof-declaretion';
 
 
 /// <reference path='./ts-modules/space.ts' />

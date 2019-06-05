@@ -1,12 +1,12 @@
 // mixin 混入
 class Disposable {
-    isDisposed: boolean;
+    isDisposed: boolean = false;
     dispose() {
         
     }
 }
 class Activatable {
-    isActive: boolean;
+    isActive: boolean = false;
     activate() {
 
     }
@@ -17,9 +17,9 @@ class Activatable {
 class SmartObject implements Disposable, Activatable {
     isDisposed: boolean = false;
     isActive: boolean = false;
-    dispose: () => void;
-    activate: () => void
-    deactivate: () => void
+    dispose!: () => void;
+    activate!: () => void;
+    deactivate!: () => void;
     constructor() {
         
     }
