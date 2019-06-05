@@ -1,0 +1,44 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
+
+PATH: 
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Users\Administrator\AppData\Local\Yarn\bin;C:\Users\Administrator\AppData\Local\Google\Chrome\Application;D:\jdk\java\bin;D:\jdk\java\jre\bin;D:\android_sdk\platform-tools;D:\python_package;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Microsoft VS Code\bin;C:\Users\Administrator\AppData\Roaming\npm;C:\Users\Administrator\AppData\Local\Google\Chrome\Application
+
+Yarn version: 
+  1.9.4
+
+Node version: 
+  8.11.4
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: connect ETIMEDOUT 103.43.210.232:443
+      at Object._errnoException (util.js:992:11)
+      at _exceptionWithHostPort (util.js:1014:20)
+      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1186:14)
+
+npm manifest: 
+  {
+    "name": "server-side",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+      "start": "node ./bin/www"
+    },
+    "dependencies": {
+      "cookie-parser": "~1.4.4",
+      "debug": "~2.6.9",
+      "express": "~4.16.1",
+      "http-errors": "~1.6.3",
+      "jade": "~1.11.0",
+      "morgan": "~1.9.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
