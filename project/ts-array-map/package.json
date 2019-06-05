@@ -1,0 +1,16 @@
+{
+  "name": "ts-array-map",
+  "version": "1.0.0",
+  "description": "array-map function  use typescript",
+  "main": "./dist/ts-array-map.js",
+  "scripts": {},
+  "keywords": [
+    "typescript",
+    "fengshuan"
+  ],
+  "author": "fengshuan <18703738860@163.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.5.1"
+  }
+}
