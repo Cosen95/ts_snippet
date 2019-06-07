@@ -32,18 +32,21 @@ export default class TodoItem extends Vue {
 		// }
 
 		@Emit('on-save')
-		public save(index, content) {
+		public save(index, content, event) {
+			event.stopPropagation();
 			return {
 				index,
 				content,
 			}
 		}
 
-		public edit() {
+		public edit(event) {
+			event.stopPropagation();
 			this.$emit('on-edit', this.index);
 		}
 
-		public cancel() {
+		public cancel(event) {
+			event.stopPropagation();
 			this.$emit('on-cancel');
 		}
 
@@ -54,7 +57,7 @@ export default class TodoItem extends Vue {
 
 		protected render() {
 			return (
-				<li class="item-wrap" on-click={this.complete}>
+				<li class="item-wrap">
 					{
 					this.editingIndex === this.index ? (
 						<div>
@@ -64,7 +67,7 @@ export default class TodoItem extends Vue {
 						</div>
 					) : (
 						<div>
-							<span style={this.item.complete ? { textDecoration: 'line-through' } : {}}>{this.item.text}</span>
+							<span on-click={this.complete} style={this.item.complete ? { textDecoration: 'line-through' } : {}}>{this.item.text}</span>
 							<a-icon type='edit' nativeOn-click={this.edit}></a-icon>
 						</div>
 					)

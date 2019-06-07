@@ -19,7 +19,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import TodoItem from '../components/todo-item';
-
+import { State, Mutation } from 'vuex-class';
 @Component({
 	name: 'TodoPage',
 	components: {
@@ -27,20 +27,12 @@ import TodoItem from '../components/todo-item';
 	},
 })
 export default class TodoPage extends Vue {
+	@State('list') public list;
 	public editingIndex = -1;
-	public list = [
-		{
-			text: '学习<typescript全面解读>',
-			complete: false,
-		},
-		{
-			text: '学习<webpack4进阶>',
-			complete: false,
-		},
-	];
-
+	@Mutation('updateList') public updateList;
+	@Mutation('updateListStatus') public updateListStatus
 	public handleSave({ index, content }) {
-		this.list[index].text = content;
+		this.updateList({ index, content });
 		this.handleCancel();
 	}
 
@@ -53,7 +45,7 @@ export default class TodoPage extends Vue {
 	}
 
 	public handleComplete(index) {
-		this.list[index].complete = true;
+		this.updateListStatus(index);
 	}
 }
 </script>
