@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+import { Component, Prop, Watch, Emit, Vue } from 'vue-property-decorator';
 
 interface Item {
 		text: string;
@@ -24,11 +24,19 @@ export default class TodoItem extends Vue {
 			}
 		}
 
-		public save() {
-			this.$emit('on-save', {
-				index: this.index,
-				content: this.editingContent,
-			});
+		// public save() {
+		// 	this.$emit('on-save', {
+		// 		index: this.index,
+		// 		content: this.editingContent,
+		// 	});
+		// }
+
+		@Emit('on-save')
+		public save(index, content) {
+			return {
+				index,
+				content,
+			}
 		}
 
 		public edit() {
@@ -46,7 +54,7 @@ export default class TodoItem extends Vue {
 					this.editingIndex === this.index ? (
 						<div>
 							<a-input v-model={this.editingContent} style={{ width: '200px' }} />
-							<a-icon type='check' nativeOn-click={this.save}></a-icon>
+							<a-icon type='check' nativeOn-click={this.save.bind(this,this.index,this.editingContent)}></a-icon>
 							<a-icon type='close' nativeOn-click={this.cancel}></a-icon>
 						</div>
 					) : (
