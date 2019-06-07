@@ -1,5 +1,5 @@
 import { Component, Prop, Watch, Emit, Vue } from 'vue-property-decorator';
-
+import './index.less';
 interface Item {
 		text: string;
 		complete: boolean;
@@ -47,9 +47,14 @@ export default class TodoItem extends Vue {
 			this.$emit('on-cancel');
 		}
 
+		@Emit('on-complete')
+		public complete() {
+			return this.index
+		}
+
 		protected render() {
 			return (
-				<li>
+				<li class="item-wrap" on-click={this.complete}>
 					{
 					this.editingIndex === this.index ? (
 						<div>
@@ -59,7 +64,7 @@ export default class TodoItem extends Vue {
 						</div>
 					) : (
 						<div>
-							<span>{this.item.text}</span>
+							<span style={this.item.complete ? { textDecoration: 'line-through' } : {}}>{this.item.text}</span>
 							<a-icon type='edit' nativeOn-click={this.edit}></a-icon>
 						</div>
 					)

@@ -10,6 +10,7 @@
         @on-save="handleSave"
         @on-edit="handleEdit"
         @on-cancel="handleCancel"
+				@on-complete="handleComplete"
         ></todo-item>
     </ul>
   </div>
@@ -49,6 +50,10 @@ export default class TodoPage extends Vue {
 
 	public handleCancel() {
 		this.editingIndex = -1;
+	}
+
+	public handleComplete(index) {
+		this.list[index].complete = true;
 	}
 }
 </script>
